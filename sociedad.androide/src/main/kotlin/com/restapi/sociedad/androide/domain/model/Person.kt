@@ -14,10 +14,11 @@ data class Person(
     val dni: Long = 0,
     val name: String = "",
     val lastName: String = "",
-    val date: LocalDate? = null
-    ) {
+    val date: LocalDate? = null,
 
     @Id
     @GeneratedValue(strategy = AUTO)
     var id: Long = 0
+
+    ) {
 }

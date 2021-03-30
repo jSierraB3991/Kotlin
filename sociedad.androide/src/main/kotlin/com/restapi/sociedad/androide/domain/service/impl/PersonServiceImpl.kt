@@ -53,7 +53,7 @@ class PersonServiceImpl : PersonService {
             person = load(idPerson)
         }catch (e: NotFoundException) {
             throw NotFoundException(e.message!!)
-        }catch (e:Exception){
+        }catch (e:BusinessException){
             throw BusinessException(e.message!!)
         }
 
