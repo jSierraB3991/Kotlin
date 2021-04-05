@@ -1,0 +1,10 @@
+server:
+  port: 8085
+app:
+  description: demo Kafka is a Spring Boot application
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: user-orders
+      bootstrap-servers: localhost:9092
