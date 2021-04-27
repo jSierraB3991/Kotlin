@@ -1,1 +1,43 @@
-
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  kafka:
+    bootstrap-servers: ${GLOBAL_KAFKA_HOST_PLAIN:localhost:9092}
+    consumer:
+      group-id: ${MS_NAME:marketing_segments}
+      bootstrap-servers: ${GLOBAL_KAFKA_HOST_PLAIN:localhost:9092}
+  output:
+    ansi:
+      enabled: ALWAYS
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${FAMILY_POSTGRES_HOST:localhost}:5432/${MS_NAME:app}
+    username: ${MS_NAME:postgres}
+    password: ${FAMILY_POSTGRES_PASSWORD:root}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        format_sql: true
+        jdbc:
+          time_zone: ${TIME_ZONE:UTC}
+      org:
+        hibernate:
+          envers:
+            default_schema: public
+            store_data_at_delete: true
+server:
+  error:
+    include-stacktrace: never
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    loggers:
+      enabled: true
