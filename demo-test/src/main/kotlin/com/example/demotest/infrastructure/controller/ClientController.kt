@@ -54,21 +54,4 @@ class ClientController(
         return ResponseEntity.ok().body(clientMapper.toDto(clientService.save(clientRequest)))
     }
 
-    @PatchMapping("/{uuid}")
-    @Caching(
-        evict = [
-            CacheEvict("v1/client/show", key = "#uuid", allEntries = true, beforeInvocation = true),
-            CacheEvict("v1/client/index", allEntries = true, beforeInvocation = true)
-        ],
-        put = [
-            CachePut("v1/client/show", key = "#uuid")
-        ]
-    )
-    fun update(
-        @PathVariable uuid: UUID,
-        @Validated(OnUpdate::class) @RequestBody clientRequest: ClientRequest
-    ): ResponseEntity<ClientDto> {
-        return ResponseEntity.ok().body(clientMapper.toDto(clientService.update(uuid, clientRequest)))
-    }
-
 }

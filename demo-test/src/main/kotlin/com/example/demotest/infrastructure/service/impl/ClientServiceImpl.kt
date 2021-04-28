@@ -37,9 +37,9 @@ class ClientServiceImpl(
     }
 
     @Transactional
-    override fun update(uuid: UUID, clientRequest: ClientRequest): Client {
-        findByUuid(uuid)
-        return clientCrudRepository.save(clientMapper.toModel(clientRequest))
+    override fun finByCode(code: Long): Client {
+        return clientCrudRepository.findByCode(code)
+            .orElseThrow()
     }
 
     override fun count(increment: Int): Long {

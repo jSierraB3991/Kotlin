@@ -16,7 +16,7 @@ interface ClientService {
 
     fun save(clientRequest: ClientRequest): Client
 
-    fun update(uuid: UUID, clientRequest: ClientRequest): Client
+    fun finByCode(code: Long): Client
 
     fun count(increment: Int): Long
 }
