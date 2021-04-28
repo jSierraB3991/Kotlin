@@ -17,8 +17,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
 @Component("listener.event_listener")
-class EventListener(
-) : PreInsertEventListener,
+class EventListener() :
+    PreInsertEventListener,
     PreLoadEventListener,
     PreUpdateEventListener,
     PostInsertEventListener,

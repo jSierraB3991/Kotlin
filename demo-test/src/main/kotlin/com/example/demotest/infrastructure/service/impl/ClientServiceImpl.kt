@@ -11,13 +11,12 @@ import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.UUID
-import java.util.Optional
 
 @Service("client.crud_service")
 class ClientServiceImpl(
     private val clientCrudRepository: ClientRepository,
     private val clientMapper: ClientMapper
-): ClientService {
+) : ClientService {
 
     @Transactional(readOnly = true)
     override fun findAll(pageable: Pageable, spec: Specification<Client>?): Page<Client> {

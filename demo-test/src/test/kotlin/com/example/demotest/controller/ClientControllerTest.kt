@@ -43,14 +43,16 @@ class ClientControllerTest {
 
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
-    fun index(){
+    fun index() {
 
         for (i in 5 downTo 1 step 1) {
-            clientService.save(ClientRequest().apply {
-                code = (faker.number().randomNumber() * i)
-                level = ClientLevel.BRONZE
-                type = ClientType.B2B
-            })
+            clientService.save(
+                ClientRequest().apply {
+                    code = (faker.number().randomNumber() * i)
+                    level = ClientLevel.BRONZE
+                    type = ClientType.B2B
+                }
+            )
         }
 
         mockMvc.perform(get(api))
@@ -68,12 +70,14 @@ class ClientControllerTest {
     }
 
     @Test
-    fun show(){
-        val client = clientService.save(ClientRequest().apply {
-            code = faker.number().randomNumber()
-            level = ClientLevel.BRONZE
-            type = ClientType.B2B
-        })
+    fun show() {
+        val client = clientService.save(
+            ClientRequest().apply {
+                code = faker.number().randomNumber()
+                level = ClientLevel.BRONZE
+                type = ClientType.B2B
+            }
+        )
 
         mockMvc.perform(get("$api/${client.uuid}"))
             .andDo(print())
@@ -89,17 +93,19 @@ class ClientControllerTest {
     }
 
     @Test
-    fun save(){
+    fun save() {
         val client = ClientRequest().apply {
             code = faker.number().randomNumber()
             level = ClientLevel.BRONZE
             type = ClientType.B2B
         }
 
-        mockMvc.perform(post(api)
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(client))
-            .accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(
+            post(api)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(client))
+                .accept(MediaType.APPLICATION_JSON)
+        )
             .andDo(print())
 
         val clientById = clientService.finByCode(client.code!!)
