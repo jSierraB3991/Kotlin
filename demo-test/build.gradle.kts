@@ -34,13 +34,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.apache.kafka:kafka-clients:2.6.0")
-	implementation("org.springframework.kafka:spring-kafka:2.6.2")
 	implementation("io.github.teastman:spring-data-hibernate-event:1.0.1")
-	implementation("commons-fileupload:commons-fileupload:1.4")
-	implementation("io.github.stavshamir:springwolf-kafka:0.1.0")
 	implementation("com.sipios:spring-search:0.2.3")
-	runtimeOnly("io.github.stavshamir:springwolf-ui:0.0.2")
 	api("org.mapstruct:mapstruct:1.4.1.Final")
 	compileOnly("io.springfox:springfox-swagger-ui:3.0.0")
 	kapt("org.mapstruct:mapstruct-processor:1.4.1.Final")
@@ -48,8 +43,6 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
-	testImplementation("org.springframework.kafka:spring-kafka-test:2.6.3")
-	testImplementation("com.github.tomakehurst:wiremock-jre8:2.25.1")
 	testImplementation("com.github.javafaker:javafaker:0.14") {
 		exclude(module = "org.yaml")
 	}

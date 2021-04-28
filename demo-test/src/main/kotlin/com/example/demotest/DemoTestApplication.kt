@@ -6,6 +6,4 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 class DemoTestApplication
 
-fun main(args: Array<String>) {
-	runApplication<DemoTestApplication>(*args)
-}
+fun main(args: Array<String>) { runApplication<DemoTestApplication>(*args) }
